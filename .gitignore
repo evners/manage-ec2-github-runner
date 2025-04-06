@@ -37,3 +37,9 @@ Thumbs.db
 .env
 .env.local
 .env.*.local
+
+# Act workflows
+.github/workflows/act.yml
+
+# Local secrets
+.secrets
