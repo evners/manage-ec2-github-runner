@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "description": "Manage on-demand EC2 instances as GitHub Actions runners.",
   "main": "index.js",
-  "type": "module",
   "scripts": {
-    "lint": "eslint src/**/*.js",
     "prepare": "husky",
-    "format": "prettier --write src/**/*.js"
+    "lint": "eslint src/**/*.ts",
+    "format": "prettier --write src/**/*.ts",
+    "build": "esbuild src/main.ts --bundle --platform=node --target=node20 --outfile=dist/index.js"
   },
   "keywords": [],
   "author": "Guillem Casas",
@@ -17,15 +17,24 @@
     "@commitlint/cli": "^19.8.0",
     "@commitlint/config-conventional": "^19.8.0",
     "@eslint/js": "^9.24.0",
+    "@types/node": "^22.14.0",
+    "@typescript-eslint/eslint-plugin": "^8.29.0",
+    "@typescript-eslint/parser": "^8.29.0",
+    "esbuild": "^0.25.2",
     "eslint": "^9.24.0",
     "husky": "^9.1.7",
     "lint-staged": "^15.5.0",
-    "prettier": "^3.5.3"
+    "prettier": "^3.5.3",
+    "typescript": "^5.8.3"
   },
   "lint-staged": {
     "*.{ts,tsx}": [
       "prettier --write",
       "eslint --max-warnings 0"
     ]
+  },
+  "dependencies": {
+    "@actions/core": "^1.11.1",
+    "@aws-sdk/client-ec2": "^3.783.0"
   }
 }
