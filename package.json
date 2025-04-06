@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "lint": "eslint src/**/*.js",
+    "prepare": "husky",
     "format": "prettier --write src/**/*.js"
   },
   "keywords": [],
@@ -15,6 +16,14 @@
   "devDependencies": {
     "eslint": "^9.24.0",
     "prettier": "^3.5.3",
-    "@eslint/js": "^9.24.0"
+    "@eslint/js": "^9.24.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.5.0"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "prettier --write",
+      "eslint --max-warnings 0"
+    ]
   }
 }
