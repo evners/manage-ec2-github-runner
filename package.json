@@ -1,7 +1,7 @@
 {
-  "name": "manage-ec2-github-runner",
+  "name": "on-demand-ec2-runner",
   "version": "1.0.0",
-  "description": "Manage on-demand EC2 instances as GitHub Actions runners.",
+  "description": "Launch and manage on-demand AWS EC2 instances as GitHub Actions runners",
   "main": "index.js",
   "scripts": {
     "prepare": "husky",
