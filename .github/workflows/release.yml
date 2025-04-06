@@ -1,32 +1,46 @@
+# This file is part of the Semantic Release GitHub Action workflow.
+# It automates the release process for a project using Semantic Release.
 name: Release
 
+# This workflow is triggered on pushes to the main branch.
 on:
   push:
     branches:
       - main
 
+# Define the jobs that will run in this workflow.
 jobs:
   release:
     name: Semantic Release
     runs-on: ubuntu-latest
 
+    # Rquire the following permissions for the job.
     permissions:
       contents: write
       issues: write
       pull-requests: write
 
+    # Define the steps that will be executed in this job.
     steps:
+      # Step 1: Checkout the code.
       - name: Checkout code
         uses: actions/checkout@v4
 
+      # Step 2: Set up Node.js environment.
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
 
+      # Step 3: Install pnpm.
+      - name: Install pnpm
+        run: npm install -g pnpm
+
+      # Step 4: Install dependencies.
       - name: Install dependencies
         run: pnpm install
 
+      # Step 5: Execute Semantic Release.
       - name: Semantic Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
