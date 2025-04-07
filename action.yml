@@ -1,0 +1,26 @@
+name: 'On-Demand EC2 Runner'
+description: 'Launch an EC2 instance on-demand to use as a GitHub Actions runner.'
+author: 'Guillem Casas'
+branding:
+  icon: 'server'
+  color: 'blue'
+
+inputs:
+  aws-region:
+    description: 'AWS region where the EC2 instance will be launched (e.g., eu-west-1)'
+    required: true
+  ec2-ami:
+    description: 'AMI ID to use for the EC2 instance (e.g., ami-1234567890abcdef0)'
+    required: true
+  ec2-instance-type:
+    description: 'EC2 instance type (e.g., t2.micro, t3.micro). Default is t2.micro.'
+    required: false
+    default: 't2.micro'
+
+outputs:
+  instance-id:
+    description: 'The ID of the launched EC2 instance.'
+
+runs:
+  using: 'node20'
+  main: 'dist/index.js'
