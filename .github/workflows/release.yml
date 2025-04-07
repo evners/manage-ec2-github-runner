@@ -40,7 +40,11 @@ jobs:
       - name: Install dependencies
         run: pnpm install --ignore-scripts
 
-      # Step 5: Execute Semantic Release.
+      # Step 5: Build the action.
+      - name: Build the action
+        run: pnpm build
+
+      # Step 6: Execute Semantic Release.
       - name: Semantic Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
