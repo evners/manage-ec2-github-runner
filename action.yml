@@ -6,6 +6,10 @@ branding:
   color: 'blue'
 
 inputs:
+  mode:
+    description: 'Action mode: "start" to launch an instance, "stop" to terminate one.'
+    required: false
+    default: 'start'
   aws-region:
     description: 'AWS region where the EC2 instance will be launched (e.g., eu-west-1)'
     required: true
