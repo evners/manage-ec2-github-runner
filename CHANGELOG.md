@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/evners/on-demand-ec2-runner/compare/v1.0.0...v1.1.0) (2025-04-07)
+
+
+### Features
+
+* add stop mode ([f02626d](https://github.com/evners/on-demand-ec2-runner/commit/f02626d4d47208a9069510ec384d5c22b589dc70))
+
 # 1.0.0 (2025-04-07)
 
 
