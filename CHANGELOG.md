@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/evners/on-demand-ec2-runner/compare/v1.1.0...v1.1.1) (2025-04-07)
+
+
+### Bug Fixes
+
+* set ec2 instance id as output ([adfc7ce](https://github.com/evners/on-demand-ec2-runner/commit/adfc7ce070b3ff37c5d78939f127ae2eeeed335f))
+
 # [1.1.0](https://github.com/evners/on-demand-ec2-runner/compare/v1.0.0...v1.1.0) (2025-04-07)
 
 
