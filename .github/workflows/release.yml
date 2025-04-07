@@ -38,7 +38,7 @@ jobs:
 
       # Step 4: Install dependencies.
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --ignore-scripts
 
       # Step 5: Execute Semantic Release.
       - name: Semantic Release
