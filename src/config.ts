@@ -44,9 +44,9 @@ export class Config {
     // GitHub - Runner.
     this.label = core.getInput('label') || undefined;
     this.githubToken = core.getInput('github-token') || undefined;
-    this.timeoutMinutes = parseInt(core.getInput('runner-timeout-minutes') || '4', 10);
-    this.retryIntervalSeconds = parseInt(core.getInput('runner-retry-seconds') || '2', 10);
-    this.quietPeriodSeconds = parseInt(core.getInput('runner-quiet-seconds') || '48', 10);
+    this.timeoutMinutes = parseInt(core.getInput('runner-timeout-minutes') || '5', 10);
+    this.retryIntervalSeconds = parseInt(core.getInput('runner-retry-seconds') || '5', 10);
+    this.quietPeriodSeconds = parseInt(core.getInput('runner-quiet-seconds') || '30', 10);
 
     // AWS - EC2.
     this.amiId = core.getInput('ec2-ami') || undefined;
