@@ -19,7 +19,7 @@ export async function waitGitHubRunnerRegistered(
   quietPeriodSeconds = 30,
 ): Promise<void> {
   // Log the initial wait period.
-  logger.info(`Waiting up to ${timeoutMinutes} minutes for GitHub runner '${label}' to register...`);
+  logger.info(`GitHub: Runner '${label}' registration in progress`);
 
   // Wait for the quiet period before starting to poll.
   await new Promise((resolve) => setTimeout(resolve, quietPeriodSeconds * 1000));
@@ -39,7 +39,7 @@ export async function waitGitHubRunnerRegistered(
         // Check if the runner is registered and online.
         if (runner?.status === ('online' as RunnerStatus)) {
           // Log the successful registration.
-          logger.success(`GitHub runner '${runner.name}' is registered and ready!`);
+          logger.success(`GitHub: Runner '${label}' status (${runner?.status})`);
 
           // Clear the interval and resolve the promise.
           clearInterval(interval);
@@ -52,7 +52,7 @@ export async function waitGitHubRunnerRegistered(
           clearInterval(interval);
 
           // Log the timeout error.
-          const message = `Timeout of ${timeoutMinutes} minutes exceeded. Runner '${label}' did not register.`;
+          const message = `GitHub: Timeout exceeded, runner '${label}' did not register.`;
           logger.error(message);
 
           // Reject the promise with an error.
@@ -60,9 +60,9 @@ export async function waitGitHubRunnerRegistered(
         }
 
         // Log the try message.
-        logger.info('Runner is not online yet. Waiting for registration...');
+        logger.info(`GitHub: Runner '${label}' status (${runner?.status})`);
       } catch (error) {
-        logger.error(`Error checking runner status: ${(error as Error).message}`);
+        logger.error(`GitHub: Error checking status -> ${(error as Error).message}`);
       }
     }, retryIntervalSeconds * 1000);
   });

@@ -22,10 +22,10 @@ export async function getGitHubRegistrationToken(config: Config): Promise<string
 
   // Check if the response contains a token.
   if (!response.data.token) {
-    throw new Error(`Failed to retrieve GitHub runner registration token for ${owner}/${repo}.`);
+    throw new Error(`GitHub: Failed to retrieve registration token for '${owner}/${repo}' repository`);
   }
 
   // Log and return the token.
-  logger.success('Successfully retrieved GitHub runner registration token.');
+  logger.success(`GitHub: Token for '${owner}/${repo}' repository retrieved`);
   return response.data.token;
 }

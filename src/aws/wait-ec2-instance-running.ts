@@ -15,17 +15,17 @@ export async function waitEc2InstanceRunning(instanceId: string, region: string)
 
   try {
     // Log the start of the waiting process.
-    logger.info(`Waiting for EC2 instance [${instanceId}] to reach "running" state...`);
+    logger.info('AwsEC2: Initializing EC2 instance');
 
     // Wait until the instance is in "running" state.
     // This will poll the instance status until it is running or the max wait time is reached.
     await waitUntilInstanceRunning({ client: ec2Client, maxWaitTime: 300 }, { InstanceIds: [instanceId] });
 
     // Log the successful transition to "running" state.
-    logger.success(`EC2 instance [${instanceId}] is now running!`);
+    logger.success('AwsEC2: Instance is now active and running');
   } catch (error) {
     // Define a custom error message for the failure case.
-    const errorMessage = `Failed to wait for EC2 instance [${instanceId}] to reach "running" state: ${(error as Error).message}`;
+    const errorMessage = `AwsEC2: Failed to reach "running" state: ${(error as Error).message}`;
 
     // Log and set the error message in the action context.
     core.error(errorMessage);
