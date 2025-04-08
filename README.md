@@ -214,5 +214,3 @@ The scripts and documentation in this project are released under the [MIT Licens
 ## 🤝 Contributions
 
 Contributions are welcome and greatly appreciated! If you have ideas, improvements, or fixes, feel free to open an issue or submit a pull request.
-
-Maintained with ❤️ by [Guillem Casas](https://github.com/gucasassi) at [EVNERS](https://github.com/evners).
