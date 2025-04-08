@@ -1,3 +1,11 @@
+# [1.5.0](https://github.com/evners/on-demand-ec2-runner/compare/v1.4.0...v1.5.0) (2025-04-08)
+
+
+### Features
+
+* add options to configure root ebs volume ([fde5751](https://github.com/evners/on-demand-ec2-runner/commit/fde5751065691d0b842b74d59a03cda4e1cc3ce1))
+* add tags for instance and ebs volume ([c8ddc30](https://github.com/evners/on-demand-ec2-runner/commit/c8ddc30e8521a8f4f9d574daddfa39928b2d1375))
+
 # [1.4.0](https://github.com/evners/on-demand-ec2-runner/compare/v1.3.2...v1.4.0) (2025-04-08)
 
 
