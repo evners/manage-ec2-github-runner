@@ -12,6 +12,9 @@ export class Config {
   // GitHub - Runner.
   readonly label?: string;
   readonly githubToken?: string;
+  readonly timeoutMinutes: number;
+  readonly retryIntervalSeconds: number;
+  readonly quietPeriodSeconds: number;
 
   // AWS - EC2.
   readonly amiId?: string;
@@ -39,6 +42,9 @@ export class Config {
     // GitHub - Runner.
     this.label = core.getInput('label') || undefined;
     this.githubToken = core.getInput('github-token') || undefined;
+    this.timeoutMinutes = parseInt(core.getInput('runner-timeout-minutes') || '4', 10);
+    this.retryIntervalSeconds = parseInt(core.getInput('runner-retry-seconds') || '2', 10);
+    this.quietPeriodSeconds = parseInt(core.getInput('runner-quiet-seconds') || '48', 10);
 
     // AWS - EC2.
     this.amiId = core.getInput('ec2-ami') || undefined;

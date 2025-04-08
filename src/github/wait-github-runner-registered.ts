@@ -1,22 +1,18 @@
+import { Config } from '../config';
 import { logger } from '../utils/logger';
 import { getRunner, Runner, RunnerStatus } from './get-runner';
 
 /**
  * Waits for a GitHub self-hosted runner to register and come online.
  *
- * @param config The action configuration.
  * @param label Label of the runner to check.
- * @param timeoutMinutes Max minutes to wait (default: 3).
- * @param retryIntervalSeconds Polling interval in seconds (default: 10).
- * @param quietPeriodSeconds Initial wait before polling (default: 30).
+ * @param config The action configuration.
+ * @returns A promise that resolves when the runner is registered and online.
  */
-export async function waitGitHubRunnerRegistered(
-  label: string,
-  githubToken: string,
-  timeoutMinutes = 3,
-  retryIntervalSeconds = 10,
-  quietPeriodSeconds = 30,
-): Promise<void> {
+export async function waitGitHubRunnerRegistered(label: string, config: Config): Promise<void> {
+  // Extract parameters from the config object.
+  const { githubToken, timeoutMinutes, retryIntervalSeconds, quietPeriodSeconds } = config;
+
   // Log the initial wait period.
   logger.info(`GitHub: Runner '${label}' registration in progress`);
 
@@ -33,7 +29,7 @@ export async function waitGitHubRunnerRegistered(
     const interval = setInterval(async () => {
       try {
         // Search for the runner by label.
-        const runner: Runner | undefined = await getRunner(githubToken, label);
+        const runner: Runner | undefined = await getRunner(githubToken!, label);
 
         // Check if the runner is registered and online.
         if (runner?.status === ('online' as RunnerStatus)) {
