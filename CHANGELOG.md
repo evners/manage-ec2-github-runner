@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/evners/on-demand-ec2-runner/compare/v1.2.0...v1.2.1) (2025-04-08)
+
+
+### Bug Fixes
+
+* add github-token on action.yml ([089312d](https://github.com/evners/on-demand-ec2-runner/commit/089312d886e17a266899713586dcf52baf31162f))
+
 # [1.2.0](https://github.com/evners/on-demand-ec2-runner/compare/v1.1.1...v1.2.0) (2025-04-08)
 
 
