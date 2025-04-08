@@ -20,6 +20,9 @@ inputs:
     description: 'EC2 instance type (e.g., t2.micro, t3.micro). Default is t2.micro.'
     required: false
     default: 't2.micro'
+  ec2-instance-id:
+    description: 'EC2 instance ID to stop or terminate (only required in "stop" mode).'
+    required: false
   github-token:
     description: 'GitHub token to use for the action.'
     required: true
