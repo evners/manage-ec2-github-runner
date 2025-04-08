@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/evners/on-demand-ec2-runner/compare/v1.2.2...v1.3.0) (2025-04-08)
+
+
+### Features
+
+* remove github-runner and timestamp from label ([f3a7b72](https://github.com/evners/on-demand-ec2-runner/commit/f3a7b72fceb03e02abbab6ef419b3b151c4c35e4))
+
 ## [1.2.2](https://github.com/evners/on-demand-ec2-runner/compare/v1.2.1...v1.2.2) (2025-04-08)
 
 
