@@ -20,6 +20,9 @@ inputs:
     description: 'EC2 instance type (e.g., t2.micro, t3.micro). Default is t2.micro.'
     required: false
     default: 't2.micro'
+  github-token:
+    description: 'GitHub token to use for the action.'
+    required: true
 
 outputs:
   instance-id:
