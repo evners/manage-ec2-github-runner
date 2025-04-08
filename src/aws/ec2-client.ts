@@ -2,6 +2,7 @@ import { EC2Client } from '@aws-sdk/client-ec2';
 
 /**
  * Creates an EC2 client with the specified region.
+ *
  * @param region - The AWS region to connect to.
  * @returns An instance of the EC2Client.
  */

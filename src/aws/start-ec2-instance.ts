@@ -1,33 +1,62 @@
 import { Config } from '../config';
-import { logger } from '../utils/logger';
 import { createEc2Client } from './ec2-client';
-import { RunInstancesCommand, _InstanceType } from '@aws-sdk/client-ec2';
+import { createUserData } from './create-user-data';
+import { generateLabel } from '../utils/generate-label';
+import { EC2Client, RunInstancesCommand, TagSpecification } from '@aws-sdk/client-ec2';
 
 /**
- * Starts an EC2 instance using the specified AMI and instance type.
- * @param ec2Client - The EC2 client to use for making API calls.
- * @returns A promise that resolves when the instance is started.
+ * Represents the data returned after starting an EC2 instance.
+ *
+ * @property {string} instanceId - The ID of the launched EC2 instance.
+ * @property {string} label - The label assigned to the GitHub Actions runner.
  */
-export async function startEc2Instance(config: Config): Promise<string> {
-  // Create an EC2 client.
-  const ec2 = createEc2Client(config.awsRegion);
+export type Ec2InstanceData = {
+  instanceId: string;
+  label: string;
+};
+
+/**
+ * Starts an EC2 instance configured as a GitHub Actions runner.
+ *
+ * @param config - The action configuration.
+ * @param token - GitHub runner registration token.
+ * @returns Object containing the instance ID and runner label.
+ */
+export async function startEc2Instance(config: Config, token: string): Promise<Ec2InstanceData> {
+  // Validate AMI ID.
+  if (!config.amiId) {
+    throw new Error('AMI ID is required to launch an EC2 instance.');
+  }
+
+  // Create a label, user data, and EC2 client.
+  const label: string = generateLabel();
+  const userData: string = createUserData(token, label);
+  const ec2Client: EC2Client = createEc2Client(config.awsRegion);
+
+  // Create the tag specifications for the instance.
+  // If tags are provided in the config, use them; otherwise, create a default tag with the label.
+  const tagSpecifications: TagSpecification[] =
+    config.tags?.length > 0
+      ? config.tags
+      : [
+          {
+            ResourceType: 'instance',
+            Tags: [{ Key: 'Name', Value: label }],
+          },
+        ];
 
   // Create a new command to run the instance.
-  const command: RunInstancesCommand = new RunInstancesCommand({
-    ImageId: config?.amiId,
-    InstanceType: config?.instanceType as _InstanceType,
-    MinCount: 1,
-    MaxCount: 1,
-    TagSpecifications: [
-      {
-        ResourceType: 'instance',
-        Tags: [{ Key: 'Name', Value: 'github-runner' }],
-      },
-    ],
+  const runInstancesCommand: RunInstancesCommand = new RunInstancesCommand({
+    ImageId: config.amiId,
+    InstanceType: config.instanceType,
+    MinCount: config.minCount,
+    MaxCount: config.maxCount,
+    UserData: userData,
+    TagSpecifications: tagSpecifications,
   });
 
   // Extract the instance ID from the response.
-  const { Instances } = await ec2.send(command);
+  const { Instances } = await ec2Client.send(runInstancesCommand);
   const instanceId = Instances?.[0]?.InstanceId;
 
   // Verify that the instance ID was returned.
@@ -35,7 +64,6 @@ export async function startEc2Instance(config: Config): Promise<string> {
     throw new Error('Failed to launch EC2 instance');
   }
 
-  // Log the successful launch of the instance.
-  logger.info(`EC2 launched: ${instanceId}`);
-  return instanceId;
+  // Return the instance ID and label.
+  return { instanceId, label };
 }

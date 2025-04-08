@@ -1,4 +1,5 @@
 import * as core from '@actions/core';
+import { _InstanceType, TagSpecification } from '@aws-sdk/client-ec2';
 
 /**
  * Configuration class for the GitHub Action.
@@ -8,8 +9,12 @@ export class Config {
   readonly mode: 'start' | 'stop';
   readonly amiId?: string;
   readonly awsRegion: string;
-  readonly instanceType: string;
+  readonly instanceType: _InstanceType;
   readonly instanceId?: string;
+  readonly githubToken?: string;
+  readonly minCount: number = 1;
+  readonly maxCount: number = 1;
+  readonly tags: TagSpecification[] = [];
 
   /**
    * Constructor for the Config class.
@@ -24,11 +29,13 @@ export class Config {
       throw new Error('"mode" must be either "start" or "stop".');
     }
 
+    // Set the class properties based on the input parameters.
     this.mode = mode;
     this.amiId = core.getInput('ec2-ami') || undefined;
     this.awsRegion = core.getInput('aws-region', { required: true });
     this.instanceId = core.getInput('ec2-instance-id') || undefined;
-    this.instanceType = core.getInput('ec2-instance-type') || 't2.micro';
+    this.githubToken = core.getInput('github-token') || undefined;
+    this.instanceType = (core.getInput('ec2-instance-type') || 't2.micro') as _InstanceType;
 
     // Validate the inputs.
     this.validate();
@@ -39,11 +46,15 @@ export class Config {
    */
   private validate(): void {
     if (this.mode === 'start' && !this.amiId) {
-      throw new Error('"ec2-ami" is required when mode is "start".');
+      throw new Error('Input "ec2-ami" is required when mode is "start".');
+    }
+
+    if (this.mode === 'start' && !this.githubToken) {
+      throw new Error('Input "github-token" is required when mode is "start".');
     }
 
     if (this.mode === 'stop' && !this.instanceId) {
-      throw new Error('"ec2-instance-id" is required when mode is "stop".');
+      throw new Error('Input "ec2-instance-id" is required when stopping a runner.');
     }
   }
 }

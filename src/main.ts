@@ -1,9 +1,11 @@
 import { Config } from './config';
 import * as core from '@actions/core';
-// AWS
+import { setOutput } from './utils/set-output';
 import { startEc2Instance } from './aws/start-ec2-instance';
 import { terminateEc2Instance } from './aws/terminate-ec2-instance';
-import { setOutput } from './utils/set-output';
+import { getGitHubRegistrationToken } from './github/get-registration-token';
+import { waitEc2InstanceRunning } from './aws/wait-ec2-instance-running';
+import { waitGitHubRunnerRegistered } from './github/wait-github-runner-registered';
 
 /**
  * The main function that runs the GitHub Action.
@@ -14,13 +16,24 @@ async function run(): Promise<void> {
     // Read inputs and validate configuration.
     const config = new Config();
 
-    // Decider for starting or stopping the EC2 instance.
+    // Decider for the action mode.
     if (config.mode === 'start') {
-      const ec2Id = await startEc2Instance(config);
+      // Create github registration token and
+      const token = await getGitHubRegistrationToken(config);
+
+      // Start the EC2 instance.
+      const { instanceId, label } = await startEc2Instance(config, token);
 
       // Set the output of the action.
-      setOutput(ec2Id);
+      setOutput(instanceId, label);
+
+      // Wait for the EC2 instance to be in running state and register the GitHub runner.
+      await Promise.all([
+        waitEc2InstanceRunning(instanceId, config.awsRegion),
+        waitGitHubRunnerRegistered(config, label),
+      ]);
     } else if (config.mode === 'stop') {
+      // Terminate the EC2 instance.
       await terminateEc2Instance(config);
     }
   } catch (error) {
@@ -28,7 +41,7 @@ async function run(): Promise<void> {
     if (error instanceof Error) {
       core.setFailed(error?.message);
     } else {
-      core.setFailed(`Action failed with unknown error: ${String(error)}`);
+      core.setFailed(`Unexpected error: ${String(error)}`);
     }
   }
 }
