@@ -1,3 +1,10 @@
+## [1.3.2](https://github.com/evners/on-demand-ec2-runner/compare/v1.3.1...v1.3.2) (2025-04-08)
+
+
+### Performance Improvements
+
+* remove docker.io and git from user data ([e31f6c5](https://github.com/evners/on-demand-ec2-runner/commit/e31f6c50a7ae1eb17b82fc5b3ea717916b4b1530))
+
 ## [1.3.1](https://github.com/evners/on-demand-ec2-runner/compare/v1.3.0...v1.3.1) (2025-04-08)
 
 
