@@ -29,7 +29,10 @@ async function run(): Promise<void> {
       setOutput(instanceId, label);
 
       // Wait for the EC2 instance to be in running state and register the GitHub runner.
-      await Promise.all([waitEc2InstanceRunning(instanceId), waitGitHubRunnerRegistered(label, config.githubToken!)]);
+      await Promise.all([
+        waitEc2InstanceRunning(instanceId, config.instanceRunningTimeoutSeconds),
+        waitGitHubRunnerRegistered(label, config.githubToken!),
+      ]);
     } else if (config.mode === 'stop') {
       // Destru
       const { githubToken, label } = config;

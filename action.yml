@@ -31,6 +31,10 @@ inputs:
       EC2 Instance Id of the created runner, it is used to terminate the EC2 instance when the runner is not needed anymore.
       Input required if you use the 'stop' mode.
     required: false
+  instance-running-timeout-seconds:
+    description: 'Timeout in seconds to wait for the EC2 instance to reach "running" state.'
+    required: false
+    default: '300'
   block-device-name:
     description: >-
       Block device name for the EBS volume (e.g., /dev/sda1)
