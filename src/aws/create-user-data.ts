@@ -14,9 +14,6 @@ export function createUserData(token: string, label: string): string {
     'set -e',
     'exec > >(tee /var/log/user-data.log|logger -t user-data -s 2>/dev/console) 2>&1',
 
-    '# Install system dependencies',
-    'sudo apt-get update -y && sudo apt-get install -y curl unzip jq docker.io',
-
     '# Create runner directory',
     'mkdir actions-runner && cd actions-runner',
 
