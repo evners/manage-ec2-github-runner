@@ -69,6 +69,8 @@ export async function startEc2Instance(config: Config, token: string): Promise<E
     MinCount: config.minCount,
     MaxCount: config.maxCount,
     UserData: userData,
+    SubnetId: config.subnetId,
+    SecurityGroupIds: config.securityGroupId ? [config.securityGroupId] : undefined,
     TagSpecifications: tagSpecifications,
     BlockDeviceMappings: blockDeviceMappings,
   });

@@ -55,6 +55,10 @@ inputs:
       Whether to delete the EBS volume when the instance is terminated.
     required: false
     default: 'true'
+  subnet-id:
+    description: >-
+      Subnet ID to use for the EC2 instance (e.g., subnet-1234567890abcdef0)
+    required: false
   github-token:
     description: >-
       GitHub Token with the 'repo' scope assigned.

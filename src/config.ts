@@ -18,6 +18,8 @@ export class Config {
 
   // AWS - EC2.
   readonly amiId?: string;
+  readonly subnetId?: string;
+  readonly securityGroupId?: string;
   readonly minCount: number = 1;
   readonly maxCount: number = 1;
   readonly instanceId?: string;
@@ -48,6 +50,8 @@ export class Config {
 
     // AWS - EC2.
     this.amiId = core.getInput('ec2-ami') || undefined;
+    this.subnetId = core.getInput('subnet-id') || undefined;
+    this.securityGroupId = core.getInput('security-group-id') || undefined;
     this.instanceId = core.getInput('ec2-instance-id') || undefined;
     this.instanceType = (core.getInput('ec2-instance-type') || 't2.micro') as _InstanceType;
     this.instanceRunningTimeoutSeconds = parseInt(core.getInput('instance-running-timeout') || '300', 10);
