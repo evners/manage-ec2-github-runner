@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/evners/on-demand-ec2-runner/compare/v1.3.2...v1.4.0) (2025-04-08)
+
+
+### Features
+
+* add support for removing github self-hosted runner on stop mode ([c01809b](https://github.com/evners/on-demand-ec2-runner/commit/c01809b3dbb42f8f67060d4875df008ba04c9995))
+
 ## [1.3.2](https://github.com/evners/on-demand-ec2-runner/compare/v1.3.1...v1.3.2) (2025-04-08)
 
 
