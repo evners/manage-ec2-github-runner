@@ -1,7 +1,7 @@
 import { Config } from '../config';
 import { createUserData } from './create-user-data';
 import { generateLabel } from '../utils/generate-label';
-import { EC2Client, RunInstancesCommand, TagSpecification } from '@aws-sdk/client-ec2';
+import { BlockDeviceMapping, EC2Client, RunInstancesCommand, TagSpecification } from '@aws-sdk/client-ec2';
 
 /**
  * Represents the data returned after starting an EC2 instance.
@@ -44,6 +44,18 @@ export async function startEc2Instance(config: Config, token: string): Promise<E
           },
         ];
 
+  // Create the block device mapping for the instance.
+  const blockDeviceMappings: BlockDeviceMapping[] = [
+    {
+      DeviceName: config.blockDeviceName,
+      Ebs: {
+        VolumeSize: config.ebsVolumeSize,
+        VolumeType: config.ebsVolumeType,
+        DeleteOnTermination: config.ebsDeleteOnTermination,
+      },
+    },
+  ];
+
   // Create a new command to run the instance.
   const runInstancesCommand: RunInstancesCommand = new RunInstancesCommand({
     ImageId: config.amiId,
@@ -52,6 +64,7 @@ export async function startEc2Instance(config: Config, token: string): Promise<E
     MaxCount: config.maxCount,
     UserData: userData,
     TagSpecifications: tagSpecifications,
+    BlockDeviceMappings: blockDeviceMappings,
   });
 
   // Extract the instance ID from the response.

@@ -1,5 +1,5 @@
 import * as core from '@actions/core';
-import { _InstanceType, TagSpecification } from '@aws-sdk/client-ec2';
+import { _InstanceType, TagSpecification, VolumeType } from '@aws-sdk/client-ec2';
 
 /**
  * Configuration class for the GitHub Action.
@@ -15,6 +15,12 @@ export class Config {
   readonly maxCount: number = 1;
   readonly tags: TagSpecification[] = [];
   readonly label?: string;
+
+  // EBS volume settings.
+  readonly blockDeviceName: string;
+  readonly ebsVolumeSize: number;
+  readonly ebsVolumeType: VolumeType = 'gp3';
+  readonly ebsDeleteOnTermination: boolean = true;
 
   /**
    * Constructor for the Config class.
@@ -36,6 +42,12 @@ export class Config {
     this.instanceId = core.getInput('ec2-instance-id') || undefined;
     this.githubToken = core.getInput('github-token') || undefined;
     this.instanceType = (core.getInput('ec2-instance-type') || 't2.micro') as _InstanceType;
+
+    // EBS volume settings.
+    this.blockDeviceName = core.getInput('block-device-name') || '/dev/sda1';
+    this.ebsVolumeSize = parseInt(core.getInput('ebs-volume-size') || '8', 10);
+    this.ebsVolumeType = (core.getInput('ebs-volume-type') || 'gp3') as VolumeType;
+    this.ebsDeleteOnTermination = (core.getInput('ebs-delete-on-termination') || true) as boolean;
 
     // Validate the inputs.
     this.validate();
