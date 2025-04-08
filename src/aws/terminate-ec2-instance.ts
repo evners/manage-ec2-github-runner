@@ -1,6 +1,5 @@
 import { Config } from '../config';
 import { logger } from '../utils/logger';
-import { createEc2Client } from './ec2-client';
 import { EC2Client, TerminateInstancesCommand } from '@aws-sdk/client-ec2';
 
 /**
@@ -11,7 +10,7 @@ import { EC2Client, TerminateInstancesCommand } from '@aws-sdk/client-ec2';
  */
 export async function terminateEc2Instance(config: Config): Promise<void> {
   // Create an EC2 client.
-  const ec2Client: EC2Client = createEc2Client(config.awsRegion);
+  const ec2Client: EC2Client = new EC2Client();
 
   // Check instance ID is provided in the configuration.
   if (!config.instanceId) {

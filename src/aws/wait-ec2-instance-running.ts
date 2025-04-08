@@ -1,6 +1,5 @@
 import * as core from '@actions/core';
 import { logger } from '../utils/logger';
-import { createEc2Client } from './ec2-client';
 import { EC2Client, waitUntilInstanceRunning } from '@aws-sdk/client-ec2';
 
 /**
@@ -9,9 +8,9 @@ import { EC2Client, waitUntilInstanceRunning } from '@aws-sdk/client-ec2';
  * @param instanceId The ID of the EC2 instance.
  * @param region AWS region where the instance is running.
  */
-export async function waitEc2InstanceRunning(instanceId: string, region: string): Promise<void> {
+export async function waitEc2InstanceRunning(instanceId: string): Promise<void> {
   // Create an EC2 client.
-  const ec2Client: EC2Client = createEc2Client(region);
+  const ec2Client: EC2Client = new EC2Client();
 
   try {
     // Log the start of the waiting process.
@@ -22,7 +21,7 @@ export async function waitEc2InstanceRunning(instanceId: string, region: string)
     await waitUntilInstanceRunning({ client: ec2Client, maxWaitTime: 300 }, { InstanceIds: [instanceId] });
 
     // Log the successful transition to "running" state.
-    logger.success('AwsEC2: Instance is now active and running');
+    logger.success('AwsEC2: Instance is now running');
   } catch (error) {
     // Define a custom error message for the failure case.
     const errorMessage = `AwsEC2: Failed to reach "running" state: ${(error as Error).message}`;

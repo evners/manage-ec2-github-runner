@@ -1,5 +1,4 @@
 import { Config } from '../config';
-import { createEc2Client } from './ec2-client';
 import { createUserData } from './create-user-data';
 import { generateLabel } from '../utils/generate-label';
 import { EC2Client, RunInstancesCommand, TagSpecification } from '@aws-sdk/client-ec2';
@@ -31,7 +30,7 @@ export async function startEc2Instance(config: Config, token: string): Promise<E
   // Create a label, user data, and EC2 client.
   const label: string = generateLabel();
   const userData: string = createUserData(token, label);
-  const ec2Client: EC2Client = createEc2Client(config.awsRegion);
+  const ec2Client: EC2Client = new EC2Client();
 
   // Create the tag specifications for the instance.
   // If tags are provided in the config, use them; otherwise, create a default tag with the label.

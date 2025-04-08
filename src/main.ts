@@ -28,10 +28,7 @@ async function run(): Promise<void> {
       setOutput(instanceId, label);
 
       // Wait for the EC2 instance to be in running state and register the GitHub runner.
-      await Promise.all([
-        waitEc2InstanceRunning(instanceId, config.awsRegion),
-        waitGitHubRunnerRegistered(config, label),
-      ]);
+      await Promise.all([waitEc2InstanceRunning(instanceId), waitGitHubRunnerRegistered(config, label)]);
     } else if (config.mode === 'stop') {
       // Terminate the EC2 instance.
       await terminateEc2Instance(config);

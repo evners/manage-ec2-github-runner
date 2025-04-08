@@ -10,10 +10,6 @@ inputs:
     description: 'Action mode: "start" to launch an instance, "stop" to terminate one.'
     required: false
     default: 'start'
-  aws-region:
-    description: 'AWS region where the EC2 instance will be launched (e.g., eu-west-1)'
-    required: false
-    default: 'eu-west-1'
   ec2-ami:
     description: >-
       AMI ID to use for the EC2 instance (e.g., ami-1234567890abcdef0)

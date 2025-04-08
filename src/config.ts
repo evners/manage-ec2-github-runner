@@ -8,7 +8,6 @@ import { _InstanceType, TagSpecification } from '@aws-sdk/client-ec2';
 export class Config {
   readonly mode: 'start' | 'stop';
   readonly amiId?: string;
-  readonly awsRegion: string;
   readonly instanceType: _InstanceType;
   readonly instanceId?: string;
   readonly githubToken?: string;
@@ -32,7 +31,6 @@ export class Config {
     // Set the class properties based on the input parameters.
     this.mode = mode;
     this.amiId = core.getInput('ec2-ami') || undefined;
-    this.awsRegion = core.getInput('aws-region', { required: true });
     this.instanceId = core.getInput('ec2-instance-id') || undefined;
     this.githubToken = core.getInput('github-token') || undefined;
     this.instanceType = (core.getInput('ec2-instance-type') || 't2.micro') as _InstanceType;
