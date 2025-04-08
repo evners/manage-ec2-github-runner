@@ -14,6 +14,7 @@ export class Config {
   readonly minCount: number = 1;
   readonly maxCount: number = 1;
   readonly tags: TagSpecification[] = [];
+  readonly label?: string;
 
   /**
    * Constructor for the Config class.
@@ -30,6 +31,7 @@ export class Config {
 
     // Set the class properties based on the input parameters.
     this.mode = mode;
+    this.label = core.getInput('label') || undefined;
     this.amiId = core.getInput('ec2-ami') || undefined;
     this.instanceId = core.getInput('ec2-instance-id') || undefined;
     this.githubToken = core.getInput('github-token') || undefined;

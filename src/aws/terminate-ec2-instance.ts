@@ -27,5 +27,5 @@ export async function terminateEc2Instance(config: Config): Promise<void> {
   await ec2Client.send(command);
 
   // Log the successful termination of the instance.
-  logger.info(`EC2 terminated: ${config.instanceId}`);
+  logger.success(`AwsEC2: Instance '${config.instanceId}' terminated`);
 }

@@ -1,4 +1,3 @@
-import { Config } from '../config';
 import { logger } from '../utils/logger';
 import { getRunner, Runner, RunnerStatus } from './get-runner';
 
@@ -12,8 +11,8 @@ import { getRunner, Runner, RunnerStatus } from './get-runner';
  * @param quietPeriodSeconds Initial wait before polling (default: 30).
  */
 export async function waitGitHubRunnerRegistered(
-  config: Config,
   label: string,
+  githubToken: string,
   timeoutMinutes = 3,
   retryIntervalSeconds = 10,
   quietPeriodSeconds = 30,
@@ -34,7 +33,7 @@ export async function waitGitHubRunnerRegistered(
     const interval = setInterval(async () => {
       try {
         // Search for the runner by label.
-        const runner: Runner | undefined = await getRunner(config, label);
+        const runner: Runner | undefined = await getRunner(githubToken, label);
 
         // Check if the runner is registered and online.
         if (runner?.status === ('online' as RunnerStatus)) {

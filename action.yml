@@ -10,6 +10,11 @@ inputs:
     description: 'Action mode: "start" to launch an instance, "stop" to terminate one.'
     required: false
     default: 'start'
+  label:
+    description: >-
+      Label assigned to the GitHub runner, used to remove the runner from GitHub.
+      Input required if you use the 'stop' mode.
+    required: false
   ec2-ami:
     description: >-
       AMI ID to use for the EC2 instance (e.g., ami-1234567890abcdef0)

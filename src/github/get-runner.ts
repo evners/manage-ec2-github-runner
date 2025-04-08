@@ -1,4 +1,3 @@
-import { Config } from '../config';
 import * as github from '@actions/github';
 import { createGitHubClient } from './github-client';
 
@@ -34,14 +33,14 @@ export interface Runner {
 /**
  * Retrieves a self-hosted runner from GitHub Actions for the current repository.
 
- * @param config Configuration object containing GitHub token and other settings.
+ * @param githubToken The GitHub token used for authentication.
  * @param label Self-hosted runner label to search for.
  * @throws Will throw an error if the runner cannot be found.
  * @returns The runner object if found.
  */
-export async function getRunner(config: Config, label: string): Promise<Runner | undefined> {
+export async function getRunner(githubToken: string, label: string): Promise<Runner | undefined> {
   // Create client.
-  const client = createGitHubClient(config);
+  const client = createGitHubClient(githubToken);
 
   // Destructure the owner and repo from the GitHub context.
   const { owner, repo } = github.context.repo;
