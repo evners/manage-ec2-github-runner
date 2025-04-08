@@ -38,9 +38,15 @@ export async function startEc2Instance(config: Config, token: string): Promise<E
     config.tags?.length > 0
       ? config.tags
       : [
+          // Specify the tags for the instance.
           {
             ResourceType: 'instance',
-            Tags: [{ Key: 'Name', Value: label }],
+            Tags: [{ Key: 'Name', Value: `github-runner-${label}` }],
+          },
+          // Specify the tags for the volume.
+          {
+            ResourceType: 'volume',
+            Tags: [{ Key: 'Name', Value: `github-runner-${label}` }],
           },
         ];
 
