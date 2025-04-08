@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/evners/on-demand-ec2-runner/compare/v1.3.0...v1.3.1) (2025-04-08)
+
+
+### Bug Fixes
+
+* add ec2-instance-id as output ([8382dbb](https://github.com/evners/on-demand-ec2-runner/commit/8382dbb11721baa27e20cb685c3ac4ea157e82db))
+
 # [1.3.0](https://github.com/evners/on-demand-ec2-runner/compare/v1.2.2...v1.3.0) (2025-04-08)
 
 
