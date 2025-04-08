@@ -1,3 +1,11 @@
+# [1.6.0](https://github.com/evners/on-demand-ec2-runner/compare/v1.5.0...v1.6.0) (2025-04-08)
+
+
+### Features
+
+* make ec2 instance running timeout configurable ([73db121](https://github.com/evners/on-demand-ec2-runner/commit/73db12121788b0b78de5493e41456e510fa1757c))
+* make runner registration timeouts and intervals configurable ([3e4dcdf](https://github.com/evners/on-demand-ec2-runner/commit/3e4dcdf96f328c5080dbaa6455dcc927c1b70116))
+
 # [1.5.0](https://github.com/evners/on-demand-ec2-runner/compare/v1.4.0...v1.5.0) (2025-04-08)
 
 
