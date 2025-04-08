@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/evners/on-demand-ec2-runner/compare/v1.1.1...v1.2.0) (2025-04-08)
+
+
+### Features
+
+* add github runner registration ([731b633](https://github.com/evners/on-demand-ec2-runner/commit/731b6337a82222337534417309fa45a3dfa0b81c))
+
 ## [1.1.1](https://github.com/evners/on-demand-ec2-runner/compare/v1.1.0...v1.1.1) (2025-04-07)
 
 
