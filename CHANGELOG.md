@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/evners/on-demand-ec2-runner/compare/v1.6.0...v1.7.0) (2025-04-08)
+
+
+### Features
+
+* add support for specifying subnet and security group ([c584d4b](https://github.com/evners/on-demand-ec2-runner/commit/c584d4b32aaa7d3ff95b9942dec304c750e890d1))
+
 # [1.6.0](https://github.com/evners/on-demand-ec2-runner/compare/v1.5.0...v1.6.0) (2025-04-08)
 
 
