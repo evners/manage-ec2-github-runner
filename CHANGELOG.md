@@ -1,3 +1,10 @@
+## [1.2.2](https://github.com/evners/on-demand-ec2-runner/compare/v1.2.1...v1.2.2) (2025-04-08)
+
+
+### Bug Fixes
+
+* add ec2-instance-id on action.yml ([0ed163a](https://github.com/evners/on-demand-ec2-runner/commit/0ed163abffc3e8ed67f8c0a58a160e81d175aff8))
+
 ## [1.2.1](https://github.com/evners/on-demand-ec2-runner/compare/v1.2.0...v1.2.1) (2025-04-08)
 
 
