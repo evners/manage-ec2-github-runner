@@ -1,0 +1,40 @@
+name: Feature Request
+description: Suggest an enhancement or improvement
+labels: [enhancement]
+type: 'Feature'
+body:
+  - type: input
+    id: title
+    attributes:
+      label: Short description
+      description: A concise title for the feature request
+      placeholder: e.g. "Support custom GitHub runner userData script"
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem to solve
+      description: What problem would this new feature solve?
+      placeholder: 'I want to customize the userData script for my runners...'
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed
+    attributes:
+      label: Proposed Solution
+      description: How do you think we should implement this feature?
+      placeholder: 'Add an optional input for custom userData...'
+    validations:
+      required: false
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives Considered
+      description: Any alternative solutions or features you’ve considered?
+      placeholder: 'Manually SSH into instances and configure them'
+    validations:
+      required: false

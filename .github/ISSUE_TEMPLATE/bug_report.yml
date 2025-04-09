@@ -1,14 +1,8 @@
 name: Bug Report
 description: Report a problem with the on-demand-ec2-runner action
 labels: [bug]
+type: 'Bug'
 body:
-  - type: markdown
-    attributes:
-      value: |
-        ## 🐞 Bug Report
-
-        Thanks for taking the time to report a bug. Please fill out the details below carefully.
-
   - type: input
     id: title
     attributes:
@@ -23,7 +17,7 @@ body:
     attributes:
       label: What happened?
       description: Describe what the bug is and what you expected to happen.
-      placeholder: "When starting the runner, it fails with error XYZ..."
+      placeholder: 'When starting the runner, it fails with error XYZ...'
     validations:
       required: true
 

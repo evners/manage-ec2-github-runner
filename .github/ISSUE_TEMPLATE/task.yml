@@ -1,0 +1,39 @@
+name: Task
+description: Plan a general improvement, refactor, documentation update, etc.
+labels: [task]
+type: 'Task'
+body:
+  - type: input
+    id: title
+    attributes:
+      label: Task Title
+      description: Short description of the task
+      placeholder: e.g. "Refactor EC2 client creation logic"
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Task Description
+      description: What needs to be done?
+      placeholder: |
+        - Clean up EC2 utility functions
+        - Improve error handling
+        - Add unit tests
+    validations:
+      required: true
+
+  - type: dropdown
+    id: task-type
+    attributes:
+      label: Task Type
+      description: Select the type of task
+      options:
+        - Refactor
+        - Documentation
+        - Testing
+        - DevOps / CI
+        - Other
+    validations:
+      required: true
