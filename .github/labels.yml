@@ -1,0 +1,66 @@
+# .github/labels.yml
+
+# 🔧 Issue Types
+- name: bug
+  color: d73a4a
+  description: Something isn't working
+
+- name: feature
+  color: a2eeef
+  description: New feature request or enhancement
+
+- name: task
+  color: cfd3d7
+  description: General maintenance or infrastructure task
+
+# 📚 Documentation
+- name: documentation
+  color: 0075ca
+  description: Improvements or additions to documentation
+
+# 🔒 Security
+- name: security
+  color: ff0000
+  description: Security vulnerability or update
+
+# 📦 Dependencies
+- name: dependencies
+  color: 0366d6
+  description: Changes related to dependencies or package upgrades
+
+# 🧪 Testing
+- name: testing
+  color: 0e8a16
+  description: Tests, test coverage, or test-related infrastructure
+
+# ⚙️ CI/CD
+- name: ci/cd
+  color: 5319e7
+  description: Changes in continuous integration or deployment pipelines
+
+# 🌍 Infra / DevOps
+- name: infra
+  color: 1d76db
+  description: Infrastructure, IaC, AWS, Terraform or general DevOps improvements
+
+# ✨ Good First Issue
+- name: good first issue
+  color: 7057ff
+  description: Good for newcomers
+
+- name: help wanted
+  color: 008672
+  description: Extra attention is needed
+
+# 🚧 Status
+- name: blocked
+  color: e4e669
+  description: Cannot proceed until a dependency is resolved
+
+- name: in progress
+  color: fef2c0
+  description: Currently being worked on
+
+- name: needs review
+  color: fbca04
+  description: PR or issue needs review
