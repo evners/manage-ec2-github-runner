@@ -57,34 +57,34 @@ labels:
     color: 'd73a4a'
     description: "Something isn't working"
   - name: feature
-    color: 'a2eeef'
+    color: '0e8a16'
     description: 'New feature or request'
   - name: enhancement
-    color: 'a2eeef'
+    color: '1d76db'
     description: 'Improvement to an existing feature'
   - name: security
-    color: 'ff0000'
+    color: 'b60205'
     description: 'Security-related changes or vulnerabilities'
   - name: documentation
     color: '0075ca'
     description: 'Changes or improvements to documentation'
   - name: dependencies
-    color: '0366d6'
+    color: '6f42c1'
     description: 'Update dependencies'
   - name: good first issue
-    color: '008672'
+    color: '7057ff'
     description: 'Good first issue for new contributors'
   - name: task
     color: 'cfd3d7'
     description: 'Chores or general tasks'
   - name: 'priority: high'
-    color: 'b60205'
+    color: 'd93f0b'
     description: 'High priority issue'
   - name: 'priority: medium'
     color: 'fbca04'
     description: 'Medium priority issue'
   - name: 'priority: low'
-    color: 'cfd3d7'
+    color: 'c2e0c6'
     description: 'Low priority issue'
 
 branches:
@@ -117,5 +117,5 @@ branches:
       # Required. Restrict who can push to this branch. Team and user restrictions are only available for organization-owned repositories. Set to null to disable.
       restrictions:
         apps: []
-        users: []
+        users: [gucasassi]
         teams: []
