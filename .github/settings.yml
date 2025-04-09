@@ -71,6 +71,9 @@ labels:
   - name: dependencies
     color: '0366d6'
     description: 'Update dependencies'
+  - name: good first issue
+    color: '008672'
+    description: 'Good first issue for new contributors'
   - name: task
     color: 'cfd3d7'
     description: 'Chores or general tasks'
