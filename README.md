@@ -6,9 +6,7 @@ This action makes it easy for **GitHub Actions** users to dynamically **start**,
 [![Build Status](https://github.com/evners/on-demand-ec2-runner/actions/workflows/release.yml/badge.svg)](https://github.com/evners/on-demand-ec2-runner/actions)
 [![License](https://img.shields.io/github/license/evners/on-demand-ec2-runner)](LICENSE)
 [![Marketplace](https://img.shields.io/badge/marketplace-on--demand--ec2--runner-blue)](https://github.com/marketplace/actions/on-demand-ec2-runner)
-[![CodeQL](https://github.com/evners/on-demand-ec2-runner/actions/workflows/codeql.yml/badge.svg)](https://github.com/evners/on-demand-ec2-runner/actions/workflows/codeql.yml)
 [![Dependabot Status](https://img.shields.io/badge/Dependabot-enabled-blue?logo=dependabot)](https://github.com/dependabot)
-
 
 ## 🚀 Getting Started
 
