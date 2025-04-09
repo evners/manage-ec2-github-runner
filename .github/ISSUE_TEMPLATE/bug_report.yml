@@ -1,0 +1,69 @@
+name: Bug Report
+description: Report a problem with the on-demand-ec2-runner action
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 🐞 Bug Report
+
+        Thanks for taking the time to report a bug. Please fill out the details below carefully.
+
+  - type: input
+    id: title
+    attributes:
+      label: Short description
+      description: A brief summary of the bug
+      placeholder: e.g. "Runner fails to register after instance launch"
+    validations:
+      required: true
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Describe what the bug is and what you expected to happen.
+      placeholder: "When starting the runner, it fails with error XYZ..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to Reproduce
+      description: How can we reproduce the issue?
+      placeholder: |
+        1. Use input X
+        2. Run the action
+        3. See error
+    validations:
+      required: true
+
+  - type: dropdown
+    id: runner-mode
+    attributes:
+      label: Mode
+      description: In which mode does the bug happen?
+      options:
+        - start
+        - stop
+    validations:
+      required: true
+
+  - type: input
+    id: runner-version
+    attributes:
+      label: Action Version
+      description: Which version of the action are you using?
+      placeholder: e.g. v1.0.2
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant Logs
+      description: Paste any logs or screenshots that can help us debug.
+      render: shell
+    validations:
+      required: false
